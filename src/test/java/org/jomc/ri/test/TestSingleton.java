@@ -32,17 +32,15 @@
  *
  */
 // SECTION-END
-package org.jomc.ri.tests;
+package org.jomc.ri.test;
 
-// SECTION-START[Specification Comment]
+import java.lang.*;
+
+// SECTION-START[Documentation]
 /**
- * <p>This specification applies to Multiton scope.
- * An application assembler may provide multiple implementations of this specification (including none).
- * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
- * selecting a single implementation.<pre>
- * TestSpecification[] objects = (TestSpecification[]) ObjectManagerFactory.getObjectManager().getObject( TestSpecification.class );
- * TestSpecification object = ObjectManagerFactory.getObjectManager().getObject( TestSpecification.class, "<i>implementation name</i>" );
- * </pre></p>
+ * <p><b>Specifications</b><ul>
+ * <li>{@code org.jomc.ri.test.TestSingletonSpecification} {@code 1.0-alpha-1-SNAPSHOT}</li>
+ * </ul></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
@@ -55,8 +53,33 @@ package org.jomc.ri.tests;
     comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
 )
 // SECTION-END
-public interface TestSpecification
+public class TestSingleton
+    implements
+        org.jomc.ri.test.TestSingletonSpecification
 {
-    // SECTION-START[TestSpecification]
+    // SECTION-START[TestSingletonSpecification]
+    // SECTION-END
+    // SECTION-START[TestSingleton]
+    // SECTION-END
+    // SECTION-START[Constructors]
+
+    /** Creates a new {@code TestSingleton} instance. */
+    @javax.annotation.Generated
+    (
+        value = "org.jomc.tools.JavaSources",
+        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
+    )
+    public TestSingleton()
+    {
+        // SECTION-START[Default Constructor]
+        super();
+        // SECTION-END
+    }
+    // SECTION-END
+    // SECTION-START[Dependencies]
+    // SECTION-END
+    // SECTION-START[Properties]
+    // SECTION-END
+    // SECTION-START[Messages]
     // SECTION-END
 }

@@ -32,15 +32,20 @@
  *
  */
 // SECTION-END
-package org.jomc.ri.tests;
+package org.jomc.ri.test;
 
-// SECTION-START[Specification Comment]
+import java.lang.*;
+
+// SECTION-START[Documentation]
 /**
- * <p>This specification applies to Multiton scope.
- * An application assembler is required to provide no more than one implementation of this specification (including none).
- * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
- * MultitonSpecification object = (MultitonSpecification) ObjectManagerFactory.getObjectManager().getObject( MultitonSpecification.class );
- * </pre></p>
+ * <p>This specification declares a multiplicity of {@code Many}.
+ * An application assembler may provide multiple implementations of this specification (including none).
+ * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
+ * selecting a single implementation.<pre>
+ * TestSingletonSpecification[] objects = (TestSingletonSpecification[]) ObjectManagerFactory.getObjectManager().getObject( TestSingletonSpecification.class );
+ * TestSingletonSpecification object = ObjectManagerFactory.getObjectManager().getObject( TestSingletonSpecification.class, "<i>implementation name</i>" );
+ * </pre>
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
@@ -53,8 +58,8 @@ package org.jomc.ri.tests;
     comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
 )
 // SECTION-END
-public interface MultitonSpecification
+public interface TestSingletonSpecification
 {
-    // SECTION-START[MultitonSpecification]
+    // SECTION-START[TestSingletonSpecification]
     // SECTION-END
 }

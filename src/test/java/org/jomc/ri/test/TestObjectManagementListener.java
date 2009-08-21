@@ -32,14 +32,18 @@
  *
  */
 // SECTION-END
-package org.jomc.ri;
+package org.jomc.ri.test;
 
-import java.util.Map;
-import org.jomc.spi.Scope;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.logging.Level;
 
 // SECTION-START[Documentation]
 /**
- * Default {@code Scope} implementation.
+ * {@code ObjectManagementLister} logging to the console.
+ * <p><b>Specifications</b><ul>
+ * <li>{@code org.jomc.spi.Listener} {@code 1.0}</li>
+ * </ul></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
@@ -52,83 +56,96 @@ import org.jomc.spi.Scope;
     comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
 )
 // SECTION-END
-public class DefaultScope implements Scope
+public class TestObjectManagementListener
+    implements
+    org.jomc.spi.Listener
 {
-    // SECTION-START[DefaultScope]
+    // SECTION-START[TestObjectManagementListener]
 
-    /** The name of the scope. */
-    private String name;
+    /** The {@code OutputStream} to stream to. */
+    private OutputStream outputStream;
 
-    /** Objects of the scope. */
-    private Map<String, Object> objects;
-
-    /**
-     * Creates a new {@code DefaultScope} instance taking the name of the scope.
-     *
-     * @param name The name of the scope.
-     * @param map The map backing the scope or {@code null}.
-     */
-    public DefaultScope( final String name, final Map<String, Object> map )
-    {
-        this.name = name;
-        this.objects = map;
-    }
+    /** The {@code PrintWriter} events are printed with. */
+    private PrintWriter printWriter;
 
     /**
-     * Gets the {@code Map} backing the scope.
+     * Gets the output stream events are streamed to.
      *
-     * @return The {@code Map} backing the scope.
+     * @return The output stream events are streamed to.
      */
-    public Map<String, Object> getObjects()
+    public OutputStream getOutputStream()
     {
-        return this.objects;
-    }
-
-    public String getName()
-    {
-        return this.name;
-    }
-
-    public Object getObject( final String instance )
-    {
-        if ( this.getObjects() != null )
+        if ( this.outputStream == null )
         {
-            return this.getObjects().get( instance );
+            this.outputStream = System.out;
         }
 
-        return null;
+        return this.outputStream;
     }
 
-    public Object putObject( final String instance, final Object object )
+    /**
+     * Gets the print writer events are printed with,
+     *
+     * @return The print writer events are printed with.
+     */
+    public PrintWriter getPrintWriter()
     {
-        if ( this.getObjects() != null )
+        if ( this.printWriter == null )
         {
-            return this.getObjects().put( instance, object );
+            this.printWriter = new PrintWriter( this.getOutputStream() );
         }
 
-        return null;
+        return this.printWriter;
     }
 
-    public Object removeObject( final String instance )
+    /**
+     * Sets the print writer to print events with,
+     *
+     * @param value The new print writer to print events with,
+     */
+    public void setPrintWriter( final PrintWriter value )
     {
-        if ( this.getObjects() != null )
+        this.printWriter = value;
+    }
+
+    /**
+     * Sets the output stream to stream events to.
+     *
+     * @param value The new output stream to stream events to.
+     */
+    public void setOutputStream( final OutputStream value )
+    {
+        this.outputStream = value;
+    }
+
+    public void onLog( final Level level, final String message, final Throwable throwable )
+    {
+        this.getPrintWriter().print( "[JOMC] " );
+        this.getPrintWriter().print( "[" + level.getLocalizedName() + "] " );
+
+        if ( message != null )
         {
-            return this.getObjects().remove( instance );
+            this.getPrintWriter().println( message );
         }
 
-        return null;
+        if ( throwable != null )
+        {
+            throwable.printStackTrace( this.getPrintWriter() );
+        }
+
+        this.getPrintWriter().flush();
     }
 
     // SECTION-END
     // SECTION-START[Constructors]
 
-    /** Creates a new {@code DefaultScope} instance. */
+    /** Creates a new {@code TestObjectManagementListener} instance. */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
         comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
-    public DefaultScope()
+    public TestObjectManagementListener()
     {
         // SECTION-START[Default Constructor]
         super();

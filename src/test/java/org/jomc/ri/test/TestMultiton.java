@@ -32,14 +32,15 @@
  *
  */
 // SECTION-END
-package org.jomc.ri;
+package org.jomc.ri.test;
 
-import java.util.Map;
-import org.jomc.spi.Scope;
+import java.lang.*;
 
 // SECTION-START[Documentation]
 /**
- * Default {@code Scope} implementation.
+ * <p><b>Specifications</b><ul>
+ * <li>{@code org.jomc.ri.test.TestMultitonSpecification} {@code 1.0-alpha-1-SNAPSHOT}</li>
+ * </ul></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
@@ -52,83 +53,23 @@ import org.jomc.spi.Scope;
     comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
 )
 // SECTION-END
-public class DefaultScope implements Scope
+public class TestMultiton
+    implements
+        org.jomc.ri.test.TestMultitonSpecification
 {
-    // SECTION-START[DefaultScope]
-
-    /** The name of the scope. */
-    private String name;
-
-    /** Objects of the scope. */
-    private Map<String, Object> objects;
-
-    /**
-     * Creates a new {@code DefaultScope} instance taking the name of the scope.
-     *
-     * @param name The name of the scope.
-     * @param map The map backing the scope or {@code null}.
-     */
-    public DefaultScope( final String name, final Map<String, Object> map )
-    {
-        this.name = name;
-        this.objects = map;
-    }
-
-    /**
-     * Gets the {@code Map} backing the scope.
-     *
-     * @return The {@code Map} backing the scope.
-     */
-    public Map<String, Object> getObjects()
-    {
-        return this.objects;
-    }
-
-    public String getName()
-    {
-        return this.name;
-    }
-
-    public Object getObject( final String instance )
-    {
-        if ( this.getObjects() != null )
-        {
-            return this.getObjects().get( instance );
-        }
-
-        return null;
-    }
-
-    public Object putObject( final String instance, final Object object )
-    {
-        if ( this.getObjects() != null )
-        {
-            return this.getObjects().put( instance, object );
-        }
-
-        return null;
-    }
-
-    public Object removeObject( final String instance )
-    {
-        if ( this.getObjects() != null )
-        {
-            return this.getObjects().remove( instance );
-        }
-
-        return null;
-    }
-
+    // SECTION-START[TestMultitonSpecification]
+    // SECTION-END
+    // SECTION-START[TestMultiton]
     // SECTION-END
     // SECTION-START[Constructors]
 
-    /** Creates a new {@code DefaultScope} instance. */
+    /** Creates a new {@code TestMultiton} instance. */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
         comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
-    public DefaultScope()
+    public TestMultiton()
     {
         // SECTION-START[Default Constructor]
         super();
