@@ -34,7 +34,7 @@
  */
 // </editor-fold>
 // SECTION-END
-package org.jomc.ri.test;
+package org.jomc.ri.test.support;
 
 import java.lang.*;
 
@@ -43,18 +43,17 @@ import java.lang.*;
 /**
  *
  * <p>
- *   This specification is identified by identifier {@code <org.jomc.ri.test.InvokerTestSpecification>}.
- *   An application assembler may provide multiple implementations of this specification (including none) due to
- *   multiplicity {@code <Many>}.
- *   This specification applies to {@code <Singleton>} scope.
- *   The same singleton object is returned whenever requested.
+ *   This specification is identified by identifier {@code <JOMC :: RI :: Tests :: Test Specification One>}.
+ *   An application assembler may provide either no or one implementation of this specification due to
+ *   multiplicity {@code <One>}.
+ *   This specification does not apply to any scope. A new object is returned whenever requested.
  * </p>
  *
  * <p>
  *   Use of class {@code ObjectManager} is supported for accessing implementations.
  *   <blockquote><pre>
- * InvokerTestSpecification[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( InvokerTestSpecification[].class );
- * InvokerTestSpecification object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( InvokerTestSpecification.class, "<i>implementation name</i>" );
+ * TestSpecificationOne object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecificationOne.class );
+ * TestSpecificationOne object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecificationOne.class, "<i>implementation name</i>" );
  *   </pre></blockquote>
  * </p>
  *
@@ -70,11 +69,8 @@ import java.lang.*;
 @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
-public interface InvokerTestSpecification
+public interface TestSpecificationOne
 {
-    // SECTION-START[InvokerTestSpecification]
-
-    String invoke( String argument ) throws Exception;
-
+    // SECTION-START[TestSpecificationOne]
     // SECTION-END
 }

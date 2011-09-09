@@ -34,7 +34,7 @@
  */
 // </editor-fold>
 // SECTION-END
-package org.jomc.ri.test;
+package org.jomc.ri.test.support;
 
 import java.lang.*;
 
@@ -43,17 +43,17 @@ import java.lang.*;
 /**
  *
  * <p>
- *   This specification is identified by identifier {@code <org.jomc.ri.test.TestSpecificationOneMore>}.
- *   An application assembler may provide either no or one implementation of this specification due to
- *   multiplicity {@code <One>}.
+ *   This specification is identified by identifier {@code <JOMC :: RI :: Tests :: Test Specification Many>}.
+ *   An application assembler may provide multiple implementations of this specification (including none) due to
+ *   multiplicity {@code <Many>}.
  *   This specification does not apply to any scope. A new object is returned whenever requested.
  * </p>
  *
  * <p>
  *   Use of class {@code ObjectManager} is supported for accessing implementations.
  *   <blockquote><pre>
- * TestSpecificationOneMore object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecificationOneMore.class );
- * TestSpecificationOneMore object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecificationOneMore.class, "<i>implementation name</i>" );
+ * TestSpecificationMany[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecificationMany[].class );
+ * TestSpecificationMany object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecificationMany.class, "<i>implementation name</i>" );
  *   </pre></blockquote>
  * </p>
  *
@@ -69,8 +69,8 @@ import java.lang.*;
 @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
-public interface TestSpecificationOneMore
+public interface TestSpecificationMany
 {
-    // SECTION-START[TestSpecificationOneMore]
+    // SECTION-START[TestSpecificationMany]
     // SECTION-END
 }

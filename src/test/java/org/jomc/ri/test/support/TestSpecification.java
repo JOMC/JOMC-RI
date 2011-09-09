@@ -34,7 +34,7 @@
  */
 // </editor-fold>
 // SECTION-END
-package org.jomc.ri.test;
+package org.jomc.ri.test.support;
 
 import java.lang.*;
 
@@ -43,17 +43,17 @@ import java.lang.*;
 /**
  *
  * <p>
- *   This specification is identified by identifier {@code <org.jomc.ri.test.TestSpecificationOne>}.
- *   An application assembler may provide either no or one implementation of this specification due to
- *   multiplicity {@code <One>}.
+ *   This specification is identified by identifier {@code <JOMC :: RI :: Tests :: Test Specification>}.
+ *   An application assembler may provide multiple implementations of this specification (including none) due to
+ *   multiplicity {@code <Many>}.
  *   This specification does not apply to any scope. A new object is returned whenever requested.
  * </p>
  *
  * <p>
  *   Use of class {@code ObjectManager} is supported for accessing implementations.
  *   <blockquote><pre>
- * TestSpecificationOne object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecificationOne.class );
- * TestSpecificationOne object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecificationOne.class, "<i>implementation name</i>" );
+ * TestSpecification[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecification[].class );
+ * TestSpecification object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecification.class, "<i>implementation name</i>" );
  *   </pre></blockquote>
  * </p>
  *
@@ -69,8 +69,8 @@ import java.lang.*;
 @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
-public interface TestSpecificationOne
+public interface TestSpecification
 {
-    // SECTION-START[TestSpecificationOne]
+    // SECTION-START[TestSpecification]
     // SECTION-END
 }

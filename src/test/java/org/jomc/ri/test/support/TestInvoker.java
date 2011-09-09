@@ -34,22 +34,26 @@
  */
 // </editor-fold>
 // SECTION-END
-package org.jomc.ri.test;
+package org.jomc.ri.test.support;
 
-import java.util.HashMap;
-import org.jomc.ri.DefaultScope;
+import java.util.Arrays;
+import java.util.Iterator;
+import org.jomc.model.Instance;
+import org.jomc.ri.DefaultInvocation;
+import org.jomc.ri.DefaultInvoker;
+import org.jomc.spi.Invocation;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
- * Test {@code Scope} implementation.
+ * Test {@code Invoker} implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code <org.jomc.ri.test.TestScope>}.
- *   It provides objects named {@code <Test>} of the following specifications:
+ *   This implementation is identified by identifier {@code <JOMC :: RI :: Tests :: Test Invoker>}.
+ *   It provides objects named {@code <JOMC :: RI :: Tests :: Test Invoker>} of the following specifications:
  *
  *   <ul>
- *     <li>{@code <org.jomc.spi.Scope>} at specification level 1.0.</li>
+ *     <li>{@code <org.jomc.spi.Invoker>} at any specification level.</li>
  *   </ul>
  *
  * </p>
@@ -64,24 +68,54 @@ import org.jomc.ri.DefaultScope;
 @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
-public class TestScope
-    extends DefaultScope
-    implements
-    org.jomc.spi.Scope
+public class TestInvoker extends DefaultInvoker
 {
-    // SECTION-START[Scope]
+    // SECTION-START[Invoker]
     // SECTION-END
-    // SECTION-START[TestScope]
+    // SECTION-START[TestInvoker]
+
+    @Override
+    public Invocation postInvoke( final Invocation invocation )
+    {
+        final StringBuilder b = new StringBuilder();
+        b.append( invocation.getObject().toString() );
+
+        if ( invocation.getContext().get( DefaultInvocation.INSTANCE_KEY ) != null )
+        {
+            b.append( "[" ).append( ( (Instance) invocation.getContext().get( DefaultInvocation.INSTANCE_KEY ) ).
+                getIdentifier() ).append( "]: " );
+
+        }
+
+        b.append( invocation.getMethod().getName() ).append( "( " );
+
+        if ( invocation.getArguments() != null )
+        {
+            for ( Iterator it = Arrays.asList( invocation.getArguments() ).iterator(); it.hasNext(); )
+            {
+                b.append( it.next() );
+                if ( it.hasNext() )
+                {
+                    b.append( ", " );
+                }
+            }
+        }
+
+        b.append( " ): " ).append( invocation.getResult() );
+        System.out.println( b.toString() );
+        return invocation;
+    }
+
     // SECTION-END
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
 
-    /** Creates a new {@code TestScope} instance. */
+    /** Creates a new {@code TestInvoker} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
-    public TestScope()
+    public TestInvoker()
     {
         // SECTION-START[Default Constructor]
-        super( new HashMap<String, Object>() );
+        super();
         // SECTION-END
     }
     // </editor-fold>

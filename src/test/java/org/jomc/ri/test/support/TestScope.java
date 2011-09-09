@@ -34,33 +34,28 @@
  */
 // </editor-fold>
 // SECTION-END
-package org.jomc.ri.test;
+package org.jomc.ri.test.support;
 
-import java.lang.*;
+import java.util.HashMap;
+import org.jomc.ri.DefaultScope;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
+ * Test {@code Scope} implementation.
  *
  * <p>
- *   This specification is identified by identifier {@code <org.jomc.ri.test.TestSpecification>}.
- *   An application assembler may provide multiple implementations of this specification (including none) due to
- *   multiplicity {@code <Many>}.
- *   This specification does not apply to any scope. A new object is returned whenever requested.
- * </p>
+ *   This implementation is identified by identifier {@code <JOMC :: RI :: Tests :: Test Scope>}.
+ *   It provides objects named {@code <Test>} of the following specifications:
  *
- * <p>
- *   Use of class {@code ObjectManager} is supported for accessing implementations.
- *   <blockquote><pre>
- * TestSpecification[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecification[].class );
- * TestSpecification object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecification.class, "<i>implementation name</i>" );
- *   </pre></blockquote>
+ *   <ul>
+ *     <li>{@code <org.jomc.spi.Scope>} at specification level 1.0.</li>
+ *   </ul>
+ *
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.2-SNAPSHOT
- * @see org.jomc.ObjectManagerFactory
- * @see org.jomc.ObjectManager
  */
 // </editor-fold>
 // SECTION-END
@@ -69,8 +64,32 @@ import java.lang.*;
 @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
-public interface TestSpecification
+public class TestScope
+    extends DefaultScope
+    implements
+    org.jomc.spi.Scope
 {
-    // SECTION-START[TestSpecification]
+    // SECTION-START[Scope]
+    // SECTION-END
+    // SECTION-START[TestScope]
+    // SECTION-END
+    // SECTION-START[Constructors]
+    // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
+
+    /** Creates a new {@code TestScope} instance. */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
+    public TestScope()
+    {
+        // SECTION-START[Default Constructor]
+        super( new HashMap<String, Object>() );
+        // SECTION-END
+    }
+    // </editor-fold>
+    // SECTION-END
+    // SECTION-START[Dependencies]
+    // SECTION-END
+    // SECTION-START[Properties]
+    // SECTION-END
+    // SECTION-START[Messages]
     // SECTION-END
 }

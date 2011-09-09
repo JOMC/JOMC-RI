@@ -34,29 +34,34 @@
  */
 // </editor-fold>
 // SECTION-END
-package org.jomc.ri.test;
+package org.jomc.ri.test.support;
 
-import java.io.IOException;
-import java.net.URI;
-import org.jomc.ri.DefaultLocator;
+import java.lang.*;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
- * Test {@code Locator} implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code <org.jomc.ri.test.TestLocator>}.
- *   It provides objects named {@code <Test>} of the following specifications:
+ *   This specification is identified by identifier {@code <JOMC :: RI :: Tests :: Invoker Test Specification>}.
+ *   An application assembler may provide multiple implementations of this specification (including none) due to
+ *   multiplicity {@code <Many>}.
+ *   This specification applies to {@code <Singleton>} scope.
+ *   The same singleton object is returned whenever requested.
+ * </p>
  *
- *   <ul>
- *     <li>{@code <org.jomc.spi.Locator>} at specification level 1.0.</li>
- *   </ul>
- *
+ * <p>
+ *   Use of class {@code ObjectManager} is supported for accessing implementations.
+ *   <blockquote><pre>
+ * InvokerTestSpecification[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( InvokerTestSpecification[].class );
+ * InvokerTestSpecification object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( InvokerTestSpecification.class, "<i>implementation name</i>" );
+ *   </pre></blockquote>
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.2-SNAPSHOT
+ * @see org.jomc.ObjectManagerFactory
+ * @see org.jomc.ObjectManager
  */
 // </editor-fold>
 // SECTION-END
@@ -65,48 +70,11 @@ import org.jomc.ri.DefaultLocator;
 @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
-public class TestLocator
-    extends DefaultLocator
-    implements
-    org.jomc.spi.Locator
+public interface InvokerTestSpecification
 {
-    // SECTION-START[Locator]
+    // SECTION-START[InvokerTestSpecification]
 
-    @Override
-    public <T> T getObject( final Class<T> specification, final URI location ) throws IOException
-    {
-        if ( specification == null )
-        {
-            throw new NullPointerException( "specification" );
-        }
-        if ( location == null )
-        {
-            throw new NullPointerException( "location" );
-        }
+    String invoke( String argument ) throws Exception;
 
-        return null;
-    }
-
-    // SECTION-END
-    // SECTION-START[TestLocator]
-    // SECTION-END
-    // SECTION-START[Constructors]
-    // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
-
-    /** Creates a new {@code TestLocator} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
-    public TestLocator()
-    {
-        // SECTION-START[Default Constructor]
-        super();
-        // SECTION-END
-    }
-    // </editor-fold>
-    // SECTION-END
-    // SECTION-START[Dependencies]
-    // SECTION-END
-    // SECTION-START[Properties]
-    // SECTION-END
-    // SECTION-START[Messages]
     // SECTION-END
 }

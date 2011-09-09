@@ -34,7 +34,7 @@
  */
 // </editor-fold>
 // SECTION-END
-package org.jomc.ri.test;
+package org.jomc.ri.test.support;
 
 import java.lang.*;
 
@@ -44,11 +44,11 @@ import java.lang.*;
  * {@code Invoker} test cases.
  *
  * <p>
- *   This implementation is identified by identifier {@code <org.jomc.ri.test.InvokerTestImplementation>}.
- *   It provides objects named {@code <InvokerTestImplementation>} of the following specifications:
+ *   This implementation is identified by identifier {@code <JOMC :: RI :: Tests :: Invoker Test Implementation>}.
+ *   It provides objects named {@code <JOMC :: RI :: Tests :: Invoker Test Implementation>} of the following specifications:
  *
  *   <ul>
- *     <li>{@code <org.jomc.ri.test.InvokerTestSpecification>} at any specification level applying to {@code <Singleton>} scope.</li>
+ *     <li>{@code <JOMC :: RI :: Tests :: Invoker Test Specification>} at any specification level applying to {@code <Singleton>} scope.</li>
  *   </ul>
  *
  * </p>
@@ -65,7 +65,7 @@ import java.lang.*;
 // SECTION-END
 public class InvokerTestImplementation
     implements
-    org.jomc.ri.test.InvokerTestSpecification
+    org.jomc.ri.test.support.InvokerTestSpecification
 {
     // SECTION-START[InvokerTestSpecification]
 

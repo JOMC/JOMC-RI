@@ -34,7 +34,7 @@
  */
 // </editor-fold>
 // SECTION-END
-package org.jomc.ri.test;
+package org.jomc.ri.test.support;
 
 import java.lang.*;
 
@@ -43,18 +43,17 @@ import java.lang.*;
 /**
  *
  * <p>
- *   This specification is identified by identifier {@code <org.jomc.ri.test.TestScopeSpecification>}.
+ *   This specification is identified by identifier {@code <JOMC :: RI :: Tests :: Override Test Specification>}.
  *   An application assembler may provide multiple implementations of this specification (including none) due to
  *   multiplicity {@code <Many>}.
- *   This specification applies to {@code <Test>} scope.
- *   The same test object is returned whenever requested.
+ *   This specification does not apply to any scope. A new object is returned whenever requested.
  * </p>
  *
  * <p>
  *   Use of class {@code ObjectManager} is supported for accessing implementations.
  *   <blockquote><pre>
- * TestScopeSpecification[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestScopeSpecification[].class );
- * TestScopeSpecification object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestScopeSpecification.class, "<i>implementation name</i>" );
+ * OverrideTestSpecification[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( OverrideTestSpecification[].class );
+ * OverrideTestSpecification object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( OverrideTestSpecification.class, "<i>implementation name</i>" );
  *   </pre></blockquote>
  * </p>
  *
@@ -70,8 +69,15 @@ import java.lang.*;
 @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
-public interface TestScopeSpecification
+public interface OverrideTestSpecification
 {
-    // SECTION-START[TestScopeSpecification]
+    // SECTION-START[OverrideTestSpecification]
+
+    String getProperty();
+
+    String getMessage();
+
+    OverrideTestSpecification getDependency();
+
     // SECTION-END
 }

@@ -34,7 +34,7 @@
  */
 // </editor-fold>
 // SECTION-END
-package org.jomc.ri.test;
+package org.jomc.ri.test.support;
 
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -46,7 +46,7 @@ import java.util.logging.Level;
  * {@code ObjectManagementLister} logging to the console.
  *
  * <p>
- *   This implementation is identified by identifier {@code <org.jomc.ri.test.TestObjectManagementListener>}.
+ *   This implementation is identified by identifier {@code <JOMC :: RI :: Tests :: Test Object Management Listener>}.
  *   It provides objects named {@code <JOMC RI>} of the following specifications:
  *
  *   <ul>

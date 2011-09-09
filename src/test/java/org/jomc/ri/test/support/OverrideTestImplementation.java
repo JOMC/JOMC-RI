@@ -34,7 +34,7 @@
  */
 // </editor-fold>
 // SECTION-END
-package org.jomc.ri.test;
+package org.jomc.ri.test.support;
 
 import java.util.Locale;
 
@@ -44,11 +44,11 @@ import java.util.Locale;
  * Override Test Implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code <Override Test Implementation>}.
- *   It provides objects named {@code <Override Test Implementation>} of the following specifications:
+ *   This implementation is identified by identifier {@code <JOMC :: RI :: Tests :: Override Test Implementation>}.
+ *   It provides objects named {@code <JOMC :: RI :: Tests :: Override Test Implementation>} of the following specifications:
  *
  *   <ul>
- *     <li>{@code <Override Test Specification>} at specification level 1.2-SNAPSHOT.</li>
+ *     <li>{@code <JOMC :: RI :: Tests :: Override Test Specification>} at specification level 1.2-SNAPSHOT.</li>
  *   </ul>
  *
  * </p>
@@ -65,7 +65,7 @@ import java.util.Locale;
 // SECTION-END
 public class OverrideTestImplementation
     implements
-    org.jomc.ri.test.OverrideTestSpecification
+    org.jomc.ri.test.support.OverrideTestSpecification
 {
     // SECTION-START[OverrideTestSpecification]
 
@@ -106,16 +106,16 @@ public class OverrideTestImplementation
     /**
      * Gets the {@code <dependencyImpl>} dependency.
      * <p>
-     *   This method returns the {@code <Override Test Implementation>} object of the {@code <Override Test Specification>} specification at any specification level.
+     *   This method returns the {@code <JOMC :: RI :: Tests :: Override Test Implementation>} object of the {@code <JOMC :: RI :: Tests :: Override Test Specification>} specification at any specification level.
      *   That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.
      * </p>
      * @return The {@code <dependencyImpl>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
-    private org.jomc.ri.test.OverrideTestSpecification getDependencyImpl()
+    private org.jomc.ri.test.support.OverrideTestSpecification getDependencyImpl()
     {
-        final org.jomc.ri.test.OverrideTestSpecification _d = (org.jomc.ri.test.OverrideTestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "dependencyImpl" );
+        final org.jomc.ri.test.support.OverrideTestSpecification _d = (org.jomc.ri.test.support.OverrideTestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "dependencyImpl" );
         assert _d != null : "'dependencyImpl' dependency not found.";
         return _d;
     }
