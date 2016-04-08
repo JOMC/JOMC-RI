@@ -32,15 +32,21 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <artifactId>jomc-parent</artifactId>
     <groupId>org.jomc</groupId>
-    <version>1.10-SNAPSHOT</version>
+    <artifactId>jomc-pom</artifactId>
+    <version>1.1</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>jomc-ri</artifactId>
+  <version>1.10-SNAPSHOT</version>
   <name>JOMC ⁑ RI</name>
   <description>Object management and configuration reference implementation.</description>
-  <url>${jomc.base.url}/${jomc.site.location}/${project.artifactId}-${project.version}</url>
+  <url>${jomc.base.url}/${jomc.site.location}</url>
+  <scm>
+    <connection>${jomc.scm.connection}/branches/jomc-ri-1.x</connection>
+    <developerConnection>${jomc.scm.developerConnection}/branches/jomc-ri-1.x</developerConnection>
+    <url>${jomc.scm.url}/branches/jomc-ri-1.x</url>
+  </scm>
   <build>
     <resources>
       <resource>
@@ -59,10 +65,12 @@
         <plugin>
           <groupId>org.jomc</groupId>
           <artifactId>maven-jomc-plugin</artifactId>
+          <version>1.10-SNAPSHOT</version>
           <executions>
             <execution>
               <id>default-process-resources</id>
               <goals>
+                <goal>manage-main-sources</goal>
                 <goal>write-main-resources</goal>
               </goals>
               <configuration>
@@ -70,7 +78,68 @@
                 <resourceBundleDefaultLanguage>en</resourceBundleDefaultLanguage>
               </configuration>
             </execution>
+            <execution>
+              <id>default-process-classes</id>
+              <goals>
+                <goal>commit-main-classes</goal>
+                <goal>validate-main-classes</goal>
+              </goals>
+              <configuration>
+                <modletExcludes>
+                  <modletExclude>JOMC ⁑ Tools</modletExclude>
+                </modletExcludes>
+              </configuration>
+            </execution>
+            <execution>
+              <id>default-process-test-resources</id>
+              <goals>
+                <goal>manage-test-sources</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>default-process-test-classes</id>
+              <goals>
+                <goal>commit-test-classes</goal>
+                <goal>validate-test-classes</goal>
+                <goal>validate-test-model</goal>
+              </goals>
+              <configuration>
+                <modletExcludes>
+                  <modletExclude>JOMC ⁑ Tools</modletExclude>
+                </modletExcludes>
+              </configuration>
+            </execution>
+            <execution>
+              <id>default-prepare-package</id>
+              <phase>prepare-package</phase>
+              <goals>
+                <goal>attach-main-module</goal>
+                <goal>attach-test-module</goal>
+              </goals>
+            </execution>
           </executions>
+          <configuration>
+            <testModuleName>${project.name} ⁑ Tests</testModuleName>
+            <templateParameters>
+              <templateParameter>
+                <key>with-project-name</key>
+                <value>Java Object Management and Configuration</value>
+              </templateParameter>
+              <templateParameter>
+                <key>with-revision-keyword</key>
+                <value>JOMC</value>
+              </templateParameter>
+              <templateParameter>
+                <key>with-vendor-copyright</key>
+                <value>false</value>
+                <type>java.lang.Boolean</type>
+              </templateParameter>
+              <templateParameter>
+                <key>with-suppress-warnings</key>
+                <value>{"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"}</value>
+              </templateParameter>
+            </templateParameters>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -86,31 +155,37 @@
     <dependency>
       <groupId>org.jomc</groupId>
       <artifactId>jomc-util</artifactId>
+      <version>1.9</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.jomc</groupId>
       <artifactId>jomc-modlet</artifactId>
+      <version>1.9</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.jomc</groupId>
       <artifactId>jomc-model</artifactId>
+      <version>1.9</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.jomc</groupId>
       <artifactId>jomc-api</artifactId>
+      <version>1.9</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.jomc</groupId>
       <artifactId>jomc-spi</artifactId>
+      <version>1.9</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -118,7 +193,7 @@
     <site>
       <id>${jomc.site.distribution.id}</id>
       <name>${jomc.site.distribution.name}</name>
-      <url>${jomc.site.distribution.base.url}/${jomc.site.location}/${project.artifactId}-${project.version}</url>
+      <url>${jomc.site.distribution.base.url}/${jomc.site.location}</url>
     </site>
   </distributionManagement>
   <profiles>
@@ -131,59 +206,11 @@
         <dependency>
           <groupId>javax.annotation</groupId>
           <artifactId>jsr250-api</artifactId>
+          <version>1.0</version>
           <scope>compile</scope>
           <optional>true</optional>
         </dependency>
       </dependencies>
-    </profile>
-    <profile>
-      <id>jomc-ci</id>
-      <build>
-        <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-scm-plugin</artifactId>
-              <executions>
-                <execution>
-                  <id>default-generate-resources</id>
-                  <phase>generate-resources</phase>
-                  <goals>
-                    <goal>update</goal>
-                  </goals>
-                </execution>
-                <execution>
-                  <id>default-process-resources</id>
-                  <phase>process-resources</phase>
-                  <goals>
-                    <goal>checkin</goal>
-                  </goals>
-                </execution>
-                <execution>
-                  <id>default-generate-test-resources</id>
-                  <phase>generate-test-resources</phase>
-                  <goals>
-                    <goal>update</goal>
-                  </goals>
-                </execution>
-                <execution>
-                  <id>default-process-test-resources</id>
-                  <phase>process-test-resources</phase>
-                  <goals>
-                    <goal>checkin</goal>
-                  </goals>
-                </execution>
-              </executions>
-            </plugin>
-          </plugins>
-        </pluginManagement>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-scm-plugin</artifactId>
-          </plugin>
-        </plugins>
-      </build>
     </profile>
   </profiles>
 </project>
