@@ -4,3 +4,4 @@
 /target
 /catalog.xml
 /.settings
+/.travis.yml
