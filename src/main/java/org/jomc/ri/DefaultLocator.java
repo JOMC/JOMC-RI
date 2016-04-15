@@ -263,7 +263,6 @@ public class DefaultLocator implements Locator
     private static String getIllegalObjectMessage( final java.util.Locale locale, final java.lang.String objectInfo, final java.lang.String classInfo )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -272,13 +271,14 @@ public class DefaultLocator implements Locator
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -308,10 +308,7 @@ public class DefaultLocator implements Locator
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -333,7 +330,6 @@ public class DefaultLocator implements Locator
     private static String getUnsupportedUriSchemeMessage( final java.util.Locale locale, final java.lang.String schemeInfo )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -342,13 +338,14 @@ public class DefaultLocator implements Locator
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -378,10 +375,7 @@ public class DefaultLocator implements Locator
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
