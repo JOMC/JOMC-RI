@@ -3790,7 +3790,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getCreatingModulesInfo( final java.util.Locale locale, final java.lang.String classLoaderInfo )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -3799,13 +3798,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -3835,10 +3835,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -3859,7 +3856,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getDefaultImplementationName( final java.util.Locale locale )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -3868,13 +3864,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -3904,10 +3901,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -3929,7 +3923,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getDefaultInvokerInfoMessage( final java.util.Locale locale, final java.lang.String classLoaderInfo )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -3938,13 +3931,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -3974,10 +3968,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -3999,7 +3990,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getDefaultListenerInfo( final java.util.Locale locale, final java.lang.String classLoaderInfo )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -4008,13 +3998,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -4044,10 +4035,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -4070,7 +4058,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getDefaultLocatorInfoMessage( final java.util.Locale locale, final java.lang.String schemeInfo, final java.lang.String classLoaderInfo )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -4079,13 +4066,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -4115,10 +4103,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -4140,7 +4125,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getDefaultLogLevelInfoMessage( final java.util.Locale locale, final java.lang.String logLevel )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -4149,13 +4133,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -4185,10 +4170,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -4210,7 +4192,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getDefaultModelIdentifierInfo( final java.util.Locale locale, final java.lang.String defaultValue )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -4219,13 +4200,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -4255,10 +4237,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -4280,7 +4259,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getDefaultModelObjectClasspahResolutionEnabledInfo( final java.util.Locale locale, final java.lang.String defaultValue )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -4289,13 +4267,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -4325,10 +4304,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -4350,7 +4326,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getDefaultModelProcessingEnabledInfo( final java.util.Locale locale, final java.lang.String defaultValue )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -4359,13 +4334,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -4395,10 +4371,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -4419,7 +4392,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getDefaultModuleName( final java.util.Locale locale )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -4428,13 +4400,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -4464,10 +4437,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -4488,7 +4458,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getDefaultModulesVendor( final java.util.Locale locale )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -4497,13 +4466,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -4533,10 +4503,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -4557,7 +4524,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getDefaultModulesVersion( final java.util.Locale locale )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -4566,13 +4532,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -4602,10 +4569,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -4628,7 +4592,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getDefaultModulesWarning( final java.util.Locale locale, final java.lang.String modelInfo, final java.lang.String classLoaderInfo )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -4637,13 +4600,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -4673,10 +4637,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -4699,7 +4660,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getDefaultScopeInfoMessage( final java.util.Locale locale, final java.lang.String scopeIdentifier, final java.lang.String classLoaderInfo )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -4708,13 +4668,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -4744,10 +4705,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -4769,7 +4727,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getDependencyCycleMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -4778,13 +4735,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -4814,10 +4772,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -4839,7 +4794,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getIgnoredInvocationMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -4848,13 +4802,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -4884,10 +4839,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -4909,7 +4861,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getIgnoredInvokerMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -4918,13 +4869,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -4954,10 +4906,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -4980,7 +4929,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getIllegalArraySpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String specificationMultiplicity )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -4989,13 +4937,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -5025,10 +4974,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -5051,7 +4997,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getIllegalObjectSpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String specificationMultiplicity )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -5060,13 +5005,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -5096,10 +5042,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -5121,7 +5064,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getImplementationInfoMessage( final java.util.Locale locale, final java.lang.Number initializationMillis )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -5130,13 +5072,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -5166,10 +5109,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -5192,7 +5132,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getInvokerInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String classLoaderInfo )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -5201,13 +5140,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -5237,10 +5177,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -5263,7 +5200,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getListenerInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String classLoaderInfo )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -5272,13 +5208,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -5308,10 +5245,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -5335,7 +5269,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getLocatorInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String schemeInfo, final java.lang.String classLoaderInfo )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -5344,13 +5277,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -5380,10 +5314,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -5406,7 +5337,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getMissingDependencyMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String dependencyName )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -5415,13 +5345,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -5451,10 +5382,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -5477,7 +5405,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getMissingImplementationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String implementationName )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -5486,13 +5413,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -5522,10 +5450,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -5547,7 +5472,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getMissingImplementationsMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -5556,13 +5480,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -5592,10 +5517,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -5618,7 +5540,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getMissingInstanceMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String implementationName )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -5627,13 +5548,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -5663,10 +5585,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -5688,7 +5607,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getMissingLocatorMessage( final java.util.Locale locale, final java.lang.String locationInfo )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -5697,13 +5615,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -5733,10 +5652,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -5759,7 +5675,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getMissingMessageMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String messageName )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -5768,13 +5683,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -5804,10 +5720,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -5829,7 +5742,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getMissingObjectInstanceMessage( final java.util.Locale locale, final java.lang.String objectInfo )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -5838,13 +5750,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -5874,10 +5787,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -5900,7 +5810,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getMissingObjectMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String implementationName )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -5909,13 +5818,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -5945,10 +5855,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -5971,7 +5878,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getMissingPropertyMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String propertyName )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -5980,13 +5886,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -6016,10 +5923,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -6041,7 +5945,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getMissingScopeMessage( final java.util.Locale locale, final java.lang.String scopeIdentifier )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -6050,13 +5953,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -6086,10 +5990,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -6111,7 +6012,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getMissingSpecificationClassMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -6120,13 +6020,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -6156,10 +6057,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -6181,7 +6079,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getMissingSpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -6190,13 +6087,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -6226,10 +6124,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -6250,7 +6145,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getModulesReportMessage( final java.util.Locale locale )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -6259,13 +6153,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -6295,10 +6190,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -6320,7 +6212,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getRuntimeModelReport( final java.util.Locale locale, final java.lang.Number millis )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -6329,13 +6220,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -6365,10 +6257,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -6390,7 +6279,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getScopeContentionFailure( final java.util.Locale locale, final java.lang.String objectIdentifier )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -6399,13 +6287,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -6435,10 +6324,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -6462,7 +6348,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getScopeInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String scopeIdentifier, final java.lang.String classLoaderInfo )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -6471,13 +6356,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -6507,10 +6393,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -6535,7 +6418,6 @@ public class DefaultObjectManager implements ObjectManager
     private static String getUnexpectedDependencyObjectsMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String dependencyName, final java.lang.Number expectedNumber, final java.lang.Number computedNumber )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -6544,13 +6426,14 @@ public class DefaultObjectManager implements ObjectManager
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -6580,10 +6463,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
