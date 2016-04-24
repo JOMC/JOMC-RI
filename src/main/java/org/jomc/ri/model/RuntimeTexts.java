@@ -64,7 +64,7 @@ import static org.jomc.ri.model.RuntimeModelObjects.createMap;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/2.0-SNAPSHOT/jomc-tools-2.0-SNAPSHOT" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/2.0-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public class RuntimeTexts extends Texts implements RuntimeModelObject
@@ -246,7 +246,7 @@ public class RuntimeTexts extends Texts implements RuntimeModelObject
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code RuntimeTexts} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/2.0-SNAPSHOT/jomc-tools-2.0-SNAPSHOT" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/2.0-SNAPSHOT" )
     public RuntimeTexts()
     {
         // SECTION-START[Default Constructor]

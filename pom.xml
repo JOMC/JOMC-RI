@@ -34,7 +34,7 @@
   <parent>
     <groupId>org.jomc</groupId>
     <artifactId>jomc-pom</artifactId>
-    <version>1.2</version>
+    <version>1.3</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>jomc-ri</artifactId>
@@ -64,7 +64,7 @@
       <plugins>
         <plugin>
           <groupId>org.jomc</groupId>
-          <artifactId>maven-jomc-plugin</artifactId>
+          <artifactId>jomc-maven-plugin</artifactId>
           <version>2.0-SNAPSHOT</version>
           <executions>
             <execution>
@@ -86,7 +86,7 @@
               </goals>
               <configuration>
                 <modletExcludes>
-                  <modletExclude>JOMC ⁑ Tools</modletExclude>
+                  <modletExclude>JOMC Tools ⁑ Modlet</modletExclude>
                 </modletExcludes>
               </configuration>
             </execution>
@@ -105,7 +105,7 @@
               </goals>
               <configuration>
                 <modletExcludes>
-                  <modletExclude>JOMC ⁑ Tools</modletExclude>
+                  <modletExclude>JOMC Tools ⁑ Modlet</modletExclude>
                 </modletExcludes>
               </configuration>
             </execution>
@@ -119,7 +119,6 @@
             </execution>
           </executions>
           <configuration>
-            <testModuleName>${project.name} ⁑ Tests</testModuleName>
             <templateParameters>
               <templateParameter>
                 <key>with-project-name</key>
@@ -146,7 +145,7 @@
     <plugins>
       <plugin>
         <groupId>org.jomc</groupId>
-        <artifactId>maven-jomc-plugin</artifactId>
+        <artifactId>jomc-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
