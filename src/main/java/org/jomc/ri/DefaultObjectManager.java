@@ -53,6 +53,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import org.jomc.ObjectManagementException;
@@ -1887,14 +1891,57 @@ public class DefaultObjectManager implements ObjectManager
             if ( cachedModules == null )
             {
                 final List<LogRecord> logRecords = new ArrayList<LogRecord>( 1024 );
+                ExecutorService executorService = null;
+
+                if ( Runtime.getRuntime().availableProcessors() > 1 )
+                {
+                    executorService = Executors.newFixedThreadPool(
+                        Runtime.getRuntime().availableProcessors(), new ThreadFactory()
+                    {
+
+                        private final ThreadGroup group;
+
+                        private final AtomicInteger threadNumber = new AtomicInteger( 1 );
+
+
+                        {
+                            final SecurityManager s = System.getSecurityManager();
+                            this.group = s != null
+                                             ? s.getThreadGroup()
+                                             : Thread.currentThread().getThreadGroup();
+
+                        }
+
+                        @Override
+                        public Thread newThread( final Runnable r )
+                        {
+                            final Thread t =
+                                new Thread( this.group, r, "jomc-" + this.threadNumber.getAndIncrement(), 0 );
+
+                            if ( t.isDaemon() )
+                            {
+                                t.setDaemon( false );
+                            }
+                            if ( t.getPriority() != Thread.NORM_PRIORITY )
+                            {
+                                t.setPriority( Thread.NORM_PRIORITY );
+                            }
+
+                            return t;
+                        }
+
+                    } );
+                }
 
                 try
                 {
                     final ModelContext modelContext = ModelContextFactory.newInstance().newModelContext( classLoader );
 
                     logRecords.add( new LogRecord( Level.FINER, getCreatingModulesInfo(
-                                                   Locale.getDefault(), this.getClassLoaderInfo( classLoader, null ) ) ) );
+                                                   Locale.getDefault(),
+                                                   this.getClassLoaderInfo( classLoader, null ) ) ) );
 
+                    modelContext.setExecutorService( executorService );
                     modelContext.setLogLevel( this.getLogLevel() );
                     modelContext.getListeners().add( new ModelContext.Listener()
                     {
@@ -1950,6 +1997,13 @@ public class DefaultObjectManager implements ObjectManager
                     final LogRecord r = new LogRecord( Level.SEVERE, getMessage( e ) );
                     r.setThrown( e );
                     logRecords.add( r );
+                }
+                finally
+                {
+                    if ( executorService != null )
+                    {
+                        executorService.shutdown();
+                    }
                 }
 
                 if ( cachedModules == null )
