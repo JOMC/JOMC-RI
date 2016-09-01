@@ -64,7 +64,7 @@ import org.jomc.spi.Locator;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.9", comments = "See http://www.jomc.org/jomc/1.9/jomc-tools-1.9" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.10-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/1.10-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public class DefaultLocator implements Locator
@@ -229,7 +229,7 @@ public class DefaultLocator implements Locator
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code DefaultLocator} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.9", comments = "See http://www.jomc.org/jomc/1.9/jomc-tools-1.9" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.10-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/1.10-SNAPSHOT" )
     public DefaultLocator()
     {
         // SECTION-START[Default Constructor]
@@ -259,11 +259,10 @@ public class DefaultLocator implements Locator
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.9", comments = "See http://www.jomc.org/jomc/1.9/jomc-tools-1.9" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.10-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/1.10-SNAPSHOT" )
     private static String getIllegalObjectMessage( final java.util.Locale locale, final java.lang.String objectInfo, final java.lang.String classInfo )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -272,13 +271,14 @@ public class DefaultLocator implements Locator
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -308,10 +308,7 @@ public class DefaultLocator implements Locator
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
@@ -329,11 +326,10 @@ public class DefaultLocator implements Locator
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.9", comments = "See http://www.jomc.org/jomc/1.9/jomc-tools-1.9" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.10-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/1.10-SNAPSHOT" )
     private static String getUnsupportedUriSchemeMessage( final java.util.Locale locale, final java.lang.String schemeInfo )
     {
         java.io.BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
 
         try
         {
@@ -342,13 +338,14 @@ public class DefaultLocator implements Locator
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
-            String line;
-            while ( ( line = reader.readLine() ) != null )
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
             {
                 builder.append( lineSeparator ).append( line );
             }
 
-            suppressExceptionOnClose = false;
+            reader.close();
+            reader = null;
+
             return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
@@ -378,10 +375,7 @@ public class DefaultLocator implements Locator
             }
             catch( final java.io.IOException e )
             {
-                if( !suppressExceptionOnClose )
-                {
-                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-                }
+                // Suppressed.
             }
         }
     }
