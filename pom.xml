@@ -38,14 +38,14 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>jomc-ri</artifactId>
-  <version>1.10-SNAPSHOT</version>
+  <version>1.10</version>
   <name>JOMC ⁑ RI</name>
   <description>Object management and configuration reference implementation.</description>
   <url>${jomc.base.url}/${jomc.site.location}</url>
   <scm>
-    <connection>${jomc.scm.connection}/branches/jomc-ri-1.x</connection>
-    <developerConnection>${jomc.scm.developerConnection}/branches/jomc-ri-1.x</developerConnection>
-    <url>${jomc.scm.url}/branches/jomc-ri-1.x</url>
+    <connection>${jomc.scm.connection}/tags/jomc-ri-1.10</connection>
+    <developerConnection>${jomc.scm.developerConnection}/tags/jomc-ri-1.10</developerConnection>
+    <url>${jomc.scm.url}/tags/jomc-ri-1.10</url>
   </scm>
   <build>
     <resources>

@@ -46,14 +46,14 @@ import java.util.Locale;
  *   <dt><b>Identifier:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Override Test Implementation</dd>
  *   <dt><b>Name:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Override Test Implementation</dd>
  *   <dt><b>Specifications:</b></dt>
- *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Override Test Specification @ 1.10-SNAPSHOT</dd>
+ *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Override Test Specification @ 1.10</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
- * @version 1.10-SNAPSHOT
+ * @version 1.10
  */
 // </editor-fold>
 // SECTION-END
