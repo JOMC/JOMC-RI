@@ -437,6 +437,15 @@
             <argument index="0" type="Number" name="Millis"/>
           </arguments>
         </message>
+        <message name="Default Parallelization Info">
+          <template defaultLanguage="en">
+            <text language="en">Default parallelization: ''{0}''</text>
+            <text language="de">Standard Parallelisierung: ''{0}''</text>
+          </template>
+          <arguments>
+            <argument index="0" name="Default Value"/>
+          </arguments>
+        </message>
       </messages>
     </implementation>
     <!-- *********************************************************************************************************** -->

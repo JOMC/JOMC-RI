@@ -1055,6 +1055,21 @@ public class DefaultObjectManager implements ObjectManager
     private Boolean modelProcessingEnabled;
 
     /**
+     * Default value of the formula used to calculate the maximum number of threads to create for running tasks in
+     * parallel.
+     *
+     * @since 1.10
+     */
+    private static volatile String defaultParallelization;
+
+    /**
+     * Formula used to calculate the maximum number of threads to create for running tasks in parallel.
+     *
+     * @since 1.10
+     */
+    private String parallelization;
+
+    /**
      * {@code ClassLoader} instance representing the bootstrap class loader.
      */
     private static final ClassLoader BOOTSTRAP_CLASSLOADER = new ClassLoader( null )
@@ -1862,6 +1877,94 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
+     * Gets the default formula used to calculate the maximum number of threads to create for running tasks in parallel.
+     * <p>
+     * The default formular used to calculate the maximum number of threads to create for running tasks in parallel is
+     * controlled by system property {@code org.jomc.ri.DefaultObjectManager.defaultParallelization} holding the
+     * formular to use by default. If that property is not set, the {@code 1.0C} default is returned.
+     * </p>
+     * <p>
+     * If the formular contains the character {@code C}, the number of threads will be calculated by multiplying the
+     * value by the number of available processors.
+     * </p>
+     *
+     * @return The default formula used to calculate the number of threads.
+     *
+     * @see #getParallelization()
+     * @see #setDefaultParallelization(java.lang.String)
+     *
+     * @since 1.10
+     */
+    public static String getDefaultParallelization()
+    {
+        if ( defaultParallelization == null )
+        {
+            defaultParallelization = System.getProperty( "org.jomc.ri.DefaultObjectManager.defaultParallelization",
+                                                         "1.0C" );
+
+        }
+
+        return defaultParallelization;
+    }
+
+    /**
+     * Sets the default formula to use to calculate the maximum number of threads to create for running tasks in
+     * parallel.
+     *
+     * @param value The new formula to use to calculate the maximum number of threads to create for running tasks in
+     * parallel or {@code null}.
+     *
+     * @see #getDefaultParallelization()
+     *
+     * @since 1.10
+     */
+    public static void setDefaultParallelization( final String value )
+    {
+        defaultParallelization = value;
+    }
+
+    /**
+     * Gets a formula used to calculate the maximum number of threads to create for running tasks in parallel.
+     *
+     * @return A formula used to calculate the number of threads.
+     *
+     * @see #getDefaultParallelization()
+     * @see #setParallelization(java.lang.String)
+     *
+     * @since 1.10
+     */
+    public final String getParallelization()
+    {
+        if ( this.parallelization == null )
+        {
+            this.parallelization = getDefaultParallelization();
+
+            if ( this.isLoggable( Level.CONFIG ) )
+            {
+                this.log( Level.CONFIG, getDefaultParallelizationInfo(
+                          Locale.getDefault(), this.parallelization ), null );
+
+            }
+        }
+
+        return this.parallelization;
+    }
+
+    /**
+     * Sets the formula to use to calculate the maximum number of threads to create for running tasks in parallel.
+     *
+     * @param value The new formula to use to calculate the maximum number of threads or {@code null}.
+     *
+     * @since 1.10
+     *
+     * @see #getParallelization()
+     */
+    public final void setParallelization( final String value )
+    {
+        this.parallelization = value;
+    }
+
+    /**
      * Gets the modules registered with a given class loader.
      *
      * @param classLoader The class loader to get the modules of.
@@ -1893,10 +1996,16 @@ public class DefaultObjectManager implements ObjectManager
                 final List<LogRecord> logRecords = new ArrayList<LogRecord>( 1024 );
                 ExecutorService executorService = null;
 
-                if ( Runtime.getRuntime().availableProcessors() > 1 )
+                final Double threads =
+                    this.getParallelization().toLowerCase( new Locale( "" ) ).contains( "c" )
+                        ? Double.valueOf( this.getParallelization().toLowerCase( new Locale( "" ) ).replace( "c", "" ) )
+                              * Runtime.getRuntime().availableProcessors()
+                        : Double.valueOf( this.getParallelization() );
+
+                if ( threads.intValue() > 1 )
                 {
                     executorService = Executors.newFixedThreadPool(
-                        Runtime.getRuntime().availableProcessors(), new ThreadFactory()
+                        threads.intValue(), new ThreadFactory()
                     {
 
                         private final ThreadGroup group;
@@ -1916,7 +2025,8 @@ public class DefaultObjectManager implements ObjectManager
                         public Thread newThread( final Runnable r )
                         {
                             final Thread t =
-                                new Thread( this.group, r, "jomc-" + this.threadNumber.getAndIncrement(), 0 );
+                                new Thread( this.group, r, "jomc-" + this.threadNumber.
+                                            getAndIncrement(), 0 );
 
                             if ( t.isDaemon() )
                             {
@@ -4470,6 +4580,73 @@ public class DefaultObjectManager implements ObjectManager
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Default Modules Warning" ), modelInfo, classLoaderInfo, (Object) null );
+            final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            final String lineSeparator = System.getProperty( "line.separator", "\n" );
+
+            for( String line = reader.readLine(); line != null; line = reader.readLine() )
+            {
+                builder.append( lineSeparator ).append( line );
+            }
+
+            reader.close();
+            reader = null;
+
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
+        }
+        catch( final java.lang.ClassCastException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.lang.IllegalArgumentException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.util.MissingResourceException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.io.IOException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                // Suppressed.
+            }
+        }
+    }
+    /**
+     * Gets the text of the {@code <Default Parallelization Info>} message.
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl></p>
+     * @param locale The locale of the message to return.
+     * @param defaultValue Format argument.
+     * @return The text of the {@code <Default Parallelization Info>} message for {@code locale}.
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/2.0-SNAPSHOT" )
+    private static String getDefaultParallelizationInfo( final java.util.Locale locale, final java.lang.String defaultValue )
+    {
+        java.io.BufferedReader reader = null;
+
+        try
+        {
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Default Parallelization Info" ), defaultValue, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
