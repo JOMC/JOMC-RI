@@ -47,15 +47,15 @@ import static org.junit.Assert.assertNull;
  *   <dt><b>Identifier:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Location Implementation Test</dd>
  *   <dt><b>Name:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Location Implementation Test</dd>
  *   <dt><b>Specifications:</b></dt>
- *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification Many @ 1.10-SNAPSHOT</dd>
- *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification One ⁑ 2 @ 1.10-SNAPSHOT</dd>
+ *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification Many @ 1.11.0-SNAPSHOT</dd>
+ *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification One ⁑ 2 @ 1.11.0-SNAPSHOT</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
- * @version 1.10-SNAPSHOT
+ * @version 1.11.0-SNAPSHOT
  */
 // </editor-fold>
 // SECTION-END
@@ -97,7 +97,7 @@ public class LocationImplementationTest
     /**
      * Gets the {@code <Test Scope Specification Many>} dependency.
      * <p>
-     *   This method returns any available object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification Many>} specification at specification level 1.10-SNAPSHOT.
+     *   This method returns any available object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification Many>} specification at specification level 1.11.0-SNAPSHOT.
      *   That specification applies to {@code <DOES_NOT_EXIST>} scope. The does_not_exist object is returned whenever requested.
      * </p>
      * <dl>
@@ -116,7 +116,7 @@ public class LocationImplementationTest
     /**
      * Gets the {@code <Test Scope Specification One>} dependency.
      * <p>
-     *   This method returns any available object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification One ⁑ 2>} specification at specification level 1.10-SNAPSHOT.
+     *   This method returns any available object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification One ⁑ 2>} specification at specification level 1.11.0-SNAPSHOT.
      *   That specification applies to {@code <DOES_NOT_EXIST>} scope. The does_not_exist object is returned whenever requested.
      * </p>
      * <dl>

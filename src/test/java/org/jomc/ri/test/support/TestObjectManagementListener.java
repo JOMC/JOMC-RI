@@ -55,7 +55,7 @@ import java.util.logging.Level;
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
- * @version 1.10-SNAPSHOT
+ * @version 1.11.0-SNAPSHOT
  */
 // </editor-fold>
 // SECTION-END
