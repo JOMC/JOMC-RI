@@ -56,7 +56,7 @@ package org.jomc.ri.model;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.10", comments = "See http://www.jomc.org/jomc-tools/1.10-SNAPSHOT" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.10.1", comments = "See http://www.jomc.org/jomc-tools/1.10.1" )
 // </editor-fold>
 // SECTION-END
 public interface RuntimeModelObject

@@ -85,7 +85,7 @@ import org.jomc.util.WeakIdentityHashMap;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.10", comments = "See http://www.jomc.org/jomc-tools/1.10-SNAPSHOT" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.10.1", comments = "See http://www.jomc.org/jomc-tools/1.10.1" )
 // </editor-fold>
 // SECTION-END
 public class RuntimeModelObjects
@@ -499,7 +499,7 @@ public class RuntimeModelObjects
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code RuntimeModelObjects} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.10", comments = "See http://www.jomc.org/jomc-tools/1.10-SNAPSHOT" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.10.1", comments = "See http://www.jomc.org/jomc-tools/1.10.1" )
     public RuntimeModelObjects()
     {
         // SECTION-START[Default Constructor]
