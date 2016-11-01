@@ -47,7 +47,7 @@ package org.jomc.ri.test.support;
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
- * @version 1.11.0-SNAPSHOT
+ * @version 1.10.1
  * @see org.jomc.ObjectManager#getObject(java.lang.Class) getObject(TestScopeSpecification[].class)
  * @see org.jomc.ObjectManager#getObject(java.lang.Class,java.lang.String) getObject(TestScopeSpecification.class, "<i>implementation name</i>")
  * @see org.jomc.ObjectManagerFactory

@@ -54,7 +54,7 @@ import static org.junit.Assert.assertTrue;
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
- * @version 1.11.0-SNAPSHOT
+ * @version 1.10.1
  */
 // </editor-fold>
 // SECTION-END
