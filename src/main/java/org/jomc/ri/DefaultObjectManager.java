@@ -2027,35 +2027,15 @@ public class DefaultObjectManager implements ObjectManager
                         threads.intValue(), new ThreadFactory()
                     {
 
-                        private final ThreadGroup group;
+                        private final ThreadFactory defaultThreadFactory = Executors.defaultThreadFactory();
 
                         private final AtomicInteger threadNumber = new AtomicInteger( 1 );
-
-
-                        {
-                            final SecurityManager s = System.getSecurityManager();
-                            this.group = s != null
-                                             ? s.getThreadGroup()
-                                             : Thread.currentThread().getThreadGroup();
-
-                        }
 
                         @Override
                         public Thread newThread( final Runnable r )
                         {
-                            final Thread t =
-                                new Thread( this.group, r, "jomc-" + this.threadNumber.
-                                            getAndIncrement(), 0 );
-
-                            if ( t.isDaemon() )
-                            {
-                                t.setDaemon( false );
-                            }
-                            if ( t.getPriority() != Thread.NORM_PRIORITY )
-                            {
-                                t.setPriority( Thread.NORM_PRIORITY );
-                            }
-
+                            final Thread t = this.defaultThreadFactory.newThread( r );
+                            t.setName( "jomc-" + this.threadNumber.getAndIncrement() );
                             return t;
                         }
 
