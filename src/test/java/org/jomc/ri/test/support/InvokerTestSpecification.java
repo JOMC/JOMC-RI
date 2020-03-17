@@ -58,7 +58,7 @@ import java.lang.*;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.10.1", comments = "See http://www.jomc.org/jomc-tools/1.10.1" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.11.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/1.11.0-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public interface InvokerTestSpecification

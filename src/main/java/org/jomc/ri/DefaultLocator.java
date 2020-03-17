@@ -64,7 +64,7 @@ import org.jomc.spi.Locator;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.10.1", comments = "See http://www.jomc.org/jomc-tools/1.10.1" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.11.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/1.11.0-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public class DefaultLocator implements Locator
@@ -229,7 +229,7 @@ public class DefaultLocator implements Locator
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code DefaultLocator} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.10.1", comments = "See http://www.jomc.org/jomc-tools/1.10.1" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.11.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/1.11.0-SNAPSHOT" )
     public DefaultLocator()
     {
         // SECTION-START[Default Constructor]
@@ -259,7 +259,7 @@ public class DefaultLocator implements Locator
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.10.1", comments = "See http://www.jomc.org/jomc-tools/1.10.1" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.11.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/1.11.0-SNAPSHOT" )
     private static String getIllegalObjectMessage( final java.util.Locale locale, final java.lang.String objectInfo, final java.lang.String classInfo )
     {
         java.io.BufferedReader reader = null;
@@ -326,7 +326,7 @@ public class DefaultLocator implements Locator
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.10.1", comments = "See http://www.jomc.org/jomc-tools/1.10.1" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.11.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/1.11.0-SNAPSHOT" )
     private static String getUnsupportedUriMessage( final java.util.Locale locale, final java.lang.String uriInfo )
     {
         java.io.BufferedReader reader = null;
