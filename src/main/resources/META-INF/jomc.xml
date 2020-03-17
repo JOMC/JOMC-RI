@@ -462,13 +462,13 @@
 
       </authors>
       <messages>
-        <message name="Unsupported URI Scheme Message">
+        <message name="Unsupported URI Message">
           <template defaultLanguage="en">
-            <text language="en">URI scheme ''{0}'' is not supported.</text>
-            <text language="de">Keine Unterstützung für URI Schema ''{0}''.</text>
+            <text language="en">URI ''{0}'' is not supported.</text>
+            <text language="de">Keine Unterstützung für URI ''{0}''.</text>
           </template>
           <arguments>
-            <argument index="0" name="Scheme Info"/>
+            <argument index="0" name="URI Info"/>
           </arguments>
         </message>
         <message name="Illegal Object Message">

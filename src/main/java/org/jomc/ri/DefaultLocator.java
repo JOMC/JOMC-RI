@@ -185,7 +185,7 @@ public class DefaultLocator implements Locator
             final String scheme = location.getScheme();
             if ( !this.isLocationSupported( location ) )
             {
-                throw new IOException( getUnsupportedUriSchemeMessage( Locale.getDefault(), location.getScheme() ) );
+                throw new IOException( getUnsupportedUriMessage( Locale.getDefault(), location.toASCIIString() ) );
             }
 
             final Object jndiObject = this.getJndiContext().lookup( this.getJndiName( location ) );
@@ -313,7 +313,7 @@ public class DefaultLocator implements Locator
         }
     }
     /**
-     * Gets the text of the {@code <Unsupported URI Scheme Message>} message.
+     * Gets the text of the {@code <Unsupported URI Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -321,19 +321,19 @@ public class DefaultLocator implements Locator
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
      * @param locale The locale of the message to return.
-     * @param schemeInfo Format argument.
-     * @return The text of the {@code <Unsupported URI Scheme Message>} message for {@code locale}.
+     * @param uriInfo Format argument.
+     * @return The text of the {@code <Unsupported URI Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/2.0.0-SNAPSHOT" )
-    private static String getUnsupportedUriSchemeMessage( final java.util.Locale locale, final java.lang.String schemeInfo )
+    private static String getUnsupportedUriMessage( final java.util.Locale locale, final java.lang.String uriInfo )
     {
         java.io.BufferedReader reader = null;
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultLocator", locale ).getString( "Unsupported URI Scheme Message" ), schemeInfo, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultLocator", locale ).getString( "Unsupported URI Message" ), uriInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
